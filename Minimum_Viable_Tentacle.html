@@ -33,7 +33,7 @@ tw-include[type="footer"] {
 [[Wiggle]]</tw-passagedata><tw-passagedata pid="2" name="Wiggle" tags="" position="524,263" size="100,100">{(set: $wiggles to $wiggles+1)
 }You strain {(if: $wiggles is 2)[mightily]} against the walls of your round little prison{(if: $wiggles is 3)[, tired but undaunted]}. {(if: $wiggles &lt; 2)[It shudders, tilts... and settles back into place, right where it started.] (else-if: $wiggles &lt; 3)[Slowly, it begins to rock back and forth.] (else:)[It trembles violently.]}
 
-{(if: $wiggles &lt; 3)[[[Wiggle harder-&gt;Wiggle]]] (else:)[[[Wiggle! Wiggle with all your might!-&gt;Hatch]]]}</tw-passagedata><tw-passagedata pid="3" name="Startup" tags="" position="525,150" size="100,100">{(set: $wiggles to 0)
+{(if: $wiggles &lt; 3)[[[Wiggle harder-&gt;Wiggle]]] (else:)[[[Wiggle! Wiggle with all your might!-&gt;Hatch]]]}</tw-passagedata><tw-passagedata pid="3" name="Startup" tags="startup" position="525,150" size="100,100">{(set: $wiggles to 0)
 (set: $lurking to 0)
 (set: $darkmode to false)}</tw-passagedata><tw-passagedata pid="4" name="Hatch" tags="" position="524,413" size="100,100">You are free!
 
@@ -57,13 +57,23 @@ Suddenly, from across the crater, a noise! The stalks rustle and bend aside; som
 
 [[Attack!]]</tw-passagedata><tw-passagedata pid="6" name="Hide!" tags="" position="449,713" size="100,100">{(set: $lurking to 1)}You roll yourself up as small and squashed as you possibly can, and duck around behind the stalk you were just measuring. It doesn&#39;t offer much cover, but maybe if you sit very still...
 
-The creature that emerges from between the stalks is like nothing you&#39;ve seen before in your short life. It moves around independently, like you; but it stands tall and unsupported without apparent effort, like the stalks. It has two long limbs on its lower part connecting it to the ground, and two shorter limbs on its upper part which it moves around and touches things with in rather the same way you&#39;ve been using your tentacle to explore your environment. And above those, on its very highest part, it has a number of unfamiliar features which you are having trouble identifying. One of them in particular, though, draws your attention. An opening that looks big enough to comfortably fit your tentacle inside.
+The creature that emerges from between the stalks is like nothing you&#39;ve seen before in your short life. It moves around independently, like you; but it stands tall and unsupported without apparent effort, like the stalks. Its height is about two-thirds of a stalk, or five or six times your unsquashed body length not counting the tentacle. It has two long limbs on its lower part connecting it to the ground, and two shorter limbs on its upper part which it moves around and touches things with in rather the same way you&#39;ve been using your tentacle to explore your environment. And above those, on its very highest part, it has a number of unfamiliar features which you are having trouble identifying. One of them in particular, though, draws your attention. An opening that looks big enough to comfortably fit your tentacle inside.
 
 Strange new instincts are stirring within you. You want... to put your tentacle inside of that feature. You think that would feel very nice. Your poor lonely tentacle practically cries out to be plunged into a nice warm orifice.
 
 [[Attack!]]
 
-[[Wait...]]</tw-passagedata><tw-passagedata pid="7" name="Attack!" tags="" position="599,713" size="100,100">(Content not yet implemented.)</tw-passagedata><tw-passagedata pid="8" name="Wait..." tags="" position="446,863" size="100,100">{(set: $lurking to 2)}Caution seems prudent in these uncertain times. You wait, and watch, and try to understand.
+[[Wait...]]</tw-passagedata><tw-passagedata pid="7" name="Attack!" tags="" position="599,713" size="100,100">You launch yourself at {(if: $lurking is 0)[your unseen foe](else-if: $lurking is 1)[the mysterious creature](else:)[the creature]}. It flails its {(if: $lurking is 0)[top half](else:)[upper limbs]} in surprise. Sounds emerge from its {(if: $lurking is 0)[uppermost protrusion](else:)[tempting orifice]}.
+
+{(if: $lurking &lt; 2)[(if: $lurking is 0)[Y](else-if: $lurking is 1)[Although you were aiming high, y]ou strike the creature somewhere in its midsection. (if: $lurking is 0)[It&#39;s so tall!](else:)[It seems your leap was a little overambitious.] Its (if: $lurking is 0)[whole body flails](else:)[lower limbs buckle], and it topples gracelessly into the crater, taking you with it. You](else:)[The impact of your body against its own knocks the creature flat; you tumble past it as it falls, scramble back, overcorrect, and]}end up clinging to its midsection with your tentacle while it flails all its limbs and attempts to scrape you off.
+
+Up close, the surface of the creature&#39;s middle parts seems loose and rough. There&#39;s an edge that you might be able to tuck yourself under to escape those wildly flailing limbs. But there&#39;s also {(if: $lurking is 0)[something else](else:)[that tempting orifice]}, luring you higher, {(if: $lurking is 0)[a half-understood glimpse that sets](else:)[setting]} your tentacle aquiver with its openness.
+
+Which way?
+
+[[Up-&gt;Toward the creature&#39;s orifice]]
+
+[[Down-&gt;Inside the creature&#39;s coverings]]</tw-passagedata><tw-passagedata pid="8" name="Wait..." tags="" position="446,863" size="100,100">{(set: $lurking to 2)}Caution seems prudent in these uncertain times. You wait, and watch, and try to understand.
 
 The creature descends into the crater, picking its way carefully down the gently curving slope. When it reaches the bottom, it&#39;s easy to see that the creature is about twice as tall as the crater is deep, at least until it crouches down to poke and prod at the shards of your eggshell.
 
@@ -71,7 +81,7 @@ Those are some very pretty shards, now that you take a moment to look at them. T
 
 That creature and its temptingly visible orifice are *pretty* close now. It might spot you at any moment. Your tentacle quivers with anticipation. Should you—? Could you—?
 
-[[Attack!]] </tw-passagedata><tw-passagedata pid="9" name="Footer" tags="footer" position="404,149" size="100,100">{(link-repeat: &quot;light&quot;)[(set: $darkmode to false) &lt;script&gt;$(&#39;tw-story&#39;).removeClass(&#39;darkmode&#39;);&lt;/script&gt;]} | {(link-repeat: &quot;dark&quot;)[(set: $darkmode to true) &lt;script&gt;$(&#39;tw-story&#39;).addClass(&#39;darkmode&#39;);&lt;/script&gt;]}</tw-passagedata></tw-storydata>
+[[Attack!]] </tw-passagedata><tw-passagedata pid="9" name="Footer" tags="footer" position="404,149" size="100,100">{(link-repeat: &quot;light&quot;)[(set: $darkmode to false) &lt;script&gt;$(&#39;tw-story&#39;).removeClass(&#39;darkmode&#39;);&lt;/script&gt;]} | {(link-repeat: &quot;dark&quot;)[(set: $darkmode to true) &lt;script&gt;$(&#39;tw-story&#39;).addClass(&#39;darkmode&#39;);&lt;/script&gt;]}</tw-passagedata><tw-passagedata pid="10" name="Toward the creature&#39;s orifice" tags="" position="566,863" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="11" name="Inside the creature&#39;s coverings" tags="" position="674,863" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
